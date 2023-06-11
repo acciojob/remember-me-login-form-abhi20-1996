@@ -1,8 +1,17 @@
 //your JS code here. If required.
-let username = document.getElementById("username").value;
-let pass = document.getElementById("password").value;
-let check = document.getElementById("checkbox");
+let checkbox = document.getElementById("checkbox");
 let form = document.getElementById("form");
+checkbox.addEventListener('click',()=>{
+		if(!checkbox.checked){
+		// alert(checkbox.checked);
+		localStorage.removeItem("password");
+		localStorage.removeItem("username");
+		document.getElementById("existing").style.display = "none";
+	}	
+});
+
+
+
 document.getElementById("submit").addEventListener('click',myFunc);
 document.getElementById("existing").addEventListener('click',exisFunc);
 if(localStorage.getItem("username") && localStorage.getItem("password")){
@@ -17,7 +26,9 @@ function exisFunc(){
 
 function myFunc(e){
 	e.preventDefault();
-	if(check){
+	let username = document.getElementById("username").value;
+	let pass = document.getElementById("password").value;
+	if(checkbox.checked){
 		localStorage.setItem("username",JSON.stringify(username));
 		localStorage.setItem("password",JSON.stringify(pass));
 		document.getElementById("existing").style.display = "block";
