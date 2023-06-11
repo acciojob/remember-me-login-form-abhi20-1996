@@ -5,14 +5,14 @@ let check = document.getElementById("checkbox").checked;
 
 
 function exisFunc(){
-	let name = JSON.parse(localStorage.getItem("username"));
-	alert(`Logged in as ${name}`);
+	let Name = JSON.parse(localStorage.getItem("name"));
+	alert(`Logged in as ${Name}`);
 }
 
 function myFunc(e){
 	e.preventDefault();
 	if(check){
-		localStorage.setItem("username",JSON.stringify(username));
+		localStorage.setItem("name",JSON.stringify(username));
 		localStorage.setItem("password",JSON.stringify(pass));
 		document.getElementById("existing").style.display = "block";
 		
@@ -25,3 +25,7 @@ document.getElementById("existing").addEventListener('click',exisFunc);
 if(localStorage.getItem("username") && localStorage.getItem("password")){
 	document.getElementById("existing").style.display = "block";
 }
+
+
+
+
