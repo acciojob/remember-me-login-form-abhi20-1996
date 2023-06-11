@@ -5,21 +5,21 @@ document.getElementById("submit").addEventListener('click', function(e) {
   let check = document.getElementById("checkbox").checked;
 
   if (check) {
-    localStorage.setItem("name", JSON.stringify(username));
+    localStorage.setItem("username", JSON.stringify(username));
     localStorage.setItem("password", JSON.stringify(pass));
     document.getElementById("existing").style.display = "block";
   } else {
-    localStorage.removeItem("name");
+    localStorage.removeItem("username");
     localStorage.removeItem("password");
   }
   alert(`Logged in as ${username}`);
 });
 
 document.getElementById("existing").addEventListener('click', function() {
-  let Name = JSON.parse(localStorage.getItem("name"));
+  let Name = JSON.parse(localStorage.getItem("username"));
   alert(`Logged in as ${Name}`);
 });
 
-if (localStorage.getItem("name") && localStorage.getItem("password")) {
+if (localStorage.getItem("username") && localStorage.getItem("password")) {
   document.getElementById("existing").style.display = "block";
 }
