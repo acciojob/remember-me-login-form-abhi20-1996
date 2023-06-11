@@ -1,21 +1,30 @@
 //your JS code here. If required.
-let nameIn=document.getElementById("username").value;
-let passIn=document.getElementById("password").value;
-let submit=document.getElementById("submit");
-let check=document.getElementById("checkbox").checked;
-let btn=document.getElementById("existing");
-submit.addEventListener('click',(e)=>{
+let username = document.getElementById("username").value;
+let pass = document.getElementById("password").value;
+let check = document.getElementById("checkbox");
+let form = document.getElementById("form");
+document.getElementById("submit").addEventListener('click',myFunc);
+document.getElementById("existing").addEventListener('click',exisFunc);
+if(localStorage.getItem("username") && localStorage.getItem("password")){
+	// document.getElementById("form").style.display = "none";
+	document.getElementById("existing").style.display = "block";
+}
+
+function exisFunc(){
+	let name = JSON.parse(localStorage.getItem("username"));
+	alert(`Logged in as ${name}`);
+}
+
+function myFunc(e){
 	e.preventDefault();
-	if (check) {
-		localStorage.setItem("username", JASON.stringify(nameIn));
-		localStorage.setItem("password", JASON.stringify(passIn));
-		btn.style.display="block";
+	if(check){
+		localStorage.setItem("username",JSON.stringify(username));
+		localStorage.setItem("password",JSON.stringify(pass));
+		document.getElementById("existing").style.display = "block";
+		
+	}else{
+		alert(`Logged in as ${username}`);
+		document.getElementById("existing").style.display = "none";
 	}
-	alert(`Logged in as ${nameIn}`);
 	
-});
-btn.addEventListener('click',()=>{
-	if (check) {
-		alert("Logged in as "+ localStorage.username);
-	}
-})
+}
